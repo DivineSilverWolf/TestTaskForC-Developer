@@ -24,10 +24,8 @@ namespace GameLibrary.Games
             {
                 WriteLine($"Раунд {count}! Вы готовы?! Если да, нажмите enter!");
                 ReadLine();
-                WriteLine("Первый игрок введите четырёхзначное число с отличающимися цифрами!");
-                _checkerPlayers[0].SecretWord = GetSecretWord();
-                WriteLine("Второй игрок введите четырёхзначное число с отличающимися цифрами!");
-                _checkerPlayers[1].SecretWord = GetSecretWord();
+                WriteSecretWord("Первый игрок введите четырёхзначное число с отличающимися цифрами!", 0);
+                WriteSecretWord("Второй игрок введите четырёхзначное число с отличающимися цифрами!", 1);
                 int NumberStartedPlayer = _lot.CastLots();
                 ConfigurationInfoGame(NumberStartedPlayer);
                 WriteLine($"Первый сходит игрок под номером {NumberStartedPlayer + 1}!");
@@ -37,6 +35,16 @@ namespace GameLibrary.Games
                 WriteLine($"секретное слово второго игрока: {_checkerPlayers[1].SecretWord}");
             }
             WriteLine($"Конечный счёт: {infoGame.PlayersWins[0]} | {infoGame.PlayersWins[1]}");
+        }
+        private void WriteSecretWord(String message, int position){
+            try{
+                WriteLine(message);
+                _checkerPlayers[position].SecretWord = GetSecretWord();
+            }
+            catch(Exception e){
+                WriteLine(e.Message);
+                WriteSecretWord(message, position);
+            }
         }
         private void Play(int NumberStartedPlayer){
             try{
