@@ -13,7 +13,7 @@ namespace GameLibrary.Games
             int count = 0;
             while(count ++ != CountPlay){
                 _checker.SecretWord = _numberGenerator.Generate().ToString();
-                WriteLine($"Раунд {count}! За сколько попыток ты отгодаешь!?");
+                WriteLine($"Раунд {count}! За сколько попыток ты отгадаешь!?");
                 Play(1);
             }
             WriteLine("Game Over");
@@ -24,7 +24,7 @@ namespace GameLibrary.Games
         }
         private void Play(int attempts){
             try{
-                WriteLine("Введите 4-х значное число у которого все цифры отличаются");
+                WriteLine("\nВведите 4-х значное число у которого все цифры отличаются");
                 string PlayerMessage = ReadLine()!;
                 var (win, messageOut) = _checker.Check(PlayerMessage);
                 if(win){
