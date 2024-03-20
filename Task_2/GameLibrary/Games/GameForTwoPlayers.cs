@@ -48,7 +48,7 @@ namespace GameLibrary.Games
         }
         private void Play(int NumberStartedPlayer){
             try{
-                WriteLine($"Игрок под номером {NumberStartedPlayer + 1} пробуй угадать!");
+                WriteLine($"\n\nИгрок под номером {NumberStartedPlayer + 1} пробуй угадать!");
                 WriteLine("Введи 4-х значное число у которого все цифры отличаются: ");
                 string PlayerMessage = ReadLine()!;
                 var (win, messageOut) = _checkerPlayers[(NumberStartedPlayer + 1) % 2].Check(PlayerMessage);
